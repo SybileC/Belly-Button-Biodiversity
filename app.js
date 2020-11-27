@@ -9,7 +9,7 @@ function buildPlot() {
     
         // var names = data.dataset.names;
         // var metadata = data.metadata;
-        console.log(data)
+        console.log(data[0])
     });
 
     // var trace1 = {
