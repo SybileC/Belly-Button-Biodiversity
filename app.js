@@ -6,10 +6,16 @@
         console.log(data.metadata);
         console.log(data.samples);
         // console.log(data)  
-        
-        var sample_values = data.samples.map(row => row[3])
-        var otu_ids = data.samples.map(row => row[1])
-        var otu_labels = data.samples.map(row => row[2])
+        // console.log(data.samples[0])
+
+        data.samples.forEach(sample => {
+            var sample_values = sample.sample_values
+            var otu_ids = sample.otu_ids
+            var otu_labels = sample.otu_
+        });
+        // var sample_values = data.samples[0].sample_values
+        // var otu_ids = data.samples[0].otu_ids
+        // var otu_labels = data.samples[0].otu_labels
 
         var trace1 = {
             type: "bar",
