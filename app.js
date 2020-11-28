@@ -1,6 +1,6 @@
 
 // function init() {
-    d3.json("samples.json").then((data) => {
+    d3.json("data/samples.json").then((data) => {
     
         console.log(data.names);
         console.log(data.metadata);
@@ -8,19 +8,19 @@
         // console.log(data)  
         // console.log(data.samples[0])
 
-        data.samples.forEach(sample => {
-            var sample_values = sample.sample_values
-            var otu_ids = sample.otu_ids
-            var otu_labels = sample.otu_
-        });
+        // data.samples.forEach(sample => {
+        //     var sample_values = sample.sample_values
+        //     var otu_ids = sample.otu_ids
+        //     var otu_labels = sample.otu_
+        // });
         // var sample_values = data.samples[0].sample_values
         // var otu_ids = data.samples[0].otu_ids
         // var otu_labels = data.samples[0].otu_labels
 
         var trace1 = {
             type: "bar",
-            x: sample_values,
-            y: otu_labels,
+            x: data.samples.map(row => row.sample_values),
+            y: data.samples.map(row => row.otu_labels,
             orientation: "h"
         };
 
@@ -33,6 +33,8 @@
         };
 
         Plotly.newPlot("bar", data, layout);
+
+
     });
 
 // var names = data.names;
