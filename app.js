@@ -1,7 +1,7 @@
 
 function buildPlot() {
 
-    d3.json("samples.json").then(function(data) {
+    d3.json("samples/samples.json").then((data) => {
     
         // console.log(data.dataset.names);
         // console.log(data.dataset.metadata);
@@ -9,7 +9,7 @@ function buildPlot() {
     
         // var names = data.dataset.names;
         // var metadata = data.metadata;
-        console.log(data[0])
+        console.log(data)
     });
 
     // var trace1 = {
