@@ -28,3 +28,5 @@ var trace1 = {
     //   xaxis: sample_values,
     //   yaxis: otu_labels,
   };
+
+  Plotly.newPlot("bar-plot", data, layout);
