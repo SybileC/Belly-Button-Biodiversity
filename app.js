@@ -1,3 +1,5 @@
+
+function init() {
 d3.json("samples.json").then((data) => {
     
     console.log(data.names);
@@ -30,3 +32,4 @@ var trace1 = {
   };
 
   Plotly.newPlot("bar-plot", data, layout);
+};
