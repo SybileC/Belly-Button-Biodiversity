@@ -15,11 +15,17 @@ function unpack(rows, index) {
     samples = Object.values(importedData.samples);
 
     // importedData.samples.forEach(sample => importedData.samples.filter(sampleObj => sampleObj.id == sample)[0].sample_values);
-    otu_labels = samples.map(row => row[2]);
+    otu_labels = unpack(samples, 3);
     // sample_values = Object.values(importedData.samples.sample_values);
     // otu_ids = Object.values(importedData.samples.otu_ids);
 
-    console.log(otu_labels);
+    // console.log(otu_labels);
+
+    console.log("buildPlot -> samples -> first object, -> otu_labels", samples[0]['otu_labels']);
+
+    console.log("buildPlot -> samples -> first object, -> otu_ids", samples[0]['otu_ids']);
+    console.log("buildPlot -> samples -> first object, -> sample_values", samples[0]['sample_values'])
+
     // trace1 = {
     //     type: "bar",
     //     x: sample_values,
