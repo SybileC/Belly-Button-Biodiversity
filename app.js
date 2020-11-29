@@ -1,49 +1,35 @@
-
-// function init() {
-    d3.json("data/samples.json").then((data) => {
-    
-        console.log(data.names);
-        console.log(data.metadata);
-        console.log(data.samples);
-        // console.log(data)  
-        // console.log(data.samples[0])
-
-        // data.samples.forEach(sample => {
-        //     var sample_values = sample.sample_values
-        //     var otu_ids = sample.otu_ids
-        //     var otu_labels = sample.otu_
-        // });
-        // var sample_values = data.samples[0].sample_values;
-        // var otu_ids = data.samples[0].otu_ids;
-        // var otu_labels = data.samples[0].otu_labels;
-
-        var otu_ids = data.samples.filter(sampleObj => sampleObj.id == sample)[0].otu_ids
-        var sample_values = data.samples.filter(sampleObj => sampleObj.id == sample)[0].sample_values
-        var otu_labels = data.samples.filter(sampleObj => sampleObj.id == sample)[0].otu_labels
-
-        var trace1 = {
-            type: "bar",
-            x: data.samples.map(row => row.sample_values),
-            y: data.samples.map(row => row.otu_labels,
-            orientation: "h"
-        };
-
-        var data = [trace1]
-
-        var layout = {
-        title: 'Top 10 OTUs Found in Individuals',
-    //   xaxis: sample_values,
-    //   yaxis: otu_labels,
-        };
-
-        Plotly.newPlot("bar", data, layout);
-
-
+function unpack(rows, index) {
+    return rows.map(function(row) {
+      return row[index];
     });
-
-// var names = data.names;
-// var metadata = data.metadata;
-// var samples = data.samples;
-
+  }
   
-// };
+
+d3.json("data/samples.json").then(function(importedData) {
+    console.log(importedData.names);
+    console.log(importedData.metadata);
+    console.log(importedData.samples);
+
+    // importedData.samples.forEach(sample => importedData.samples.filter(sampleObj => sampleObj.id == sample)[0].sample_values);
+    otu_labels = unpack(importedData.samples, 2);
+    sample_values = unpack(importedData.samples, 3);
+    otu_ids = unpack(importedData.samples, 1);
+
+    console.log(otu_ids)
+
+    trace1 = {
+        type: "bar",
+        x: sample_values,
+        y: otu_ids,
+        text: otu_labels,
+        orientation: "h"
+    };
+
+    data = [trace1];
+
+    layout = {
+        title: 'Top 10 OTUs Found in Individuals'
+    }
+
+    Plotly.newPlot("bar", data, layout);
+});
