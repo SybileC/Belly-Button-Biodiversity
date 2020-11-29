@@ -13,9 +13,13 @@
         //     var otu_ids = sample.otu_ids
         //     var otu_labels = sample.otu_
         // });
-        // var sample_values = data.samples[0].sample_values
-        // var otu_ids = data.samples[0].otu_ids
-        // var otu_labels = data.samples[0].otu_labels
+        // var sample_values = data.samples[0].sample_values;
+        // var otu_ids = data.samples[0].otu_ids;
+        // var otu_labels = data.samples[0].otu_labels;
+
+        var otu_ids = data.samples.filter(sampleObj => sampleObj.id == sample)[0].otu_ids
+        var sample_values = data.samples.filter(sampleObj => sampleObj.id == sample)[0].sample_values
+        var otu_labels = data.samples.filter(sampleObj => sampleObj.id == sample)[0].otu_labels
 
         var trace1 = {
             type: "bar",
