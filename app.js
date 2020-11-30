@@ -37,18 +37,23 @@ function unpack(rows, index) {
     // }).slice(0, 10);
     // console.log(descendingOrder);
 
-    samples.forEach(sample => {
+   let sample_id = samples.map(sample => {
         // Object.entries(sample).sort(function (a, b) {
         //     return b['sample_values'] - a['sample_values']
         // }).slice(0, 10);
-        otu_labels = sample['otu_labels'];
-        otu_ids = sample['otu_ids'];
-        sample_values = sample['sample_values']
+        // otu_labels = sample['otu_labels'];
+        // otu_ids = sample['otu_ids'];
+        // sample_values = sample['sample_values']
+        // slicedSample = Array.prototype.slice.call(sample, 4)
+        return sample.otu_ids
     }); 
 
-    console.log(otu_labels[0]);
-    console.log(otu_ids);
-    console.log(sample_values);
+    console.log(sample_id)
+
+    // console.log(otu_labels[0]);
+    // console.log(otu_ids);
+    // console.log(sample_values);
+    // console.log(slicedSample);
 
 
 
