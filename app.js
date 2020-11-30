@@ -14,6 +14,8 @@ function unpack(rows, index) {
     metadata = Object.values(importedData.metadata);
     samples = Object.values(importedData.samples);
 
+
+
     // importedData.samples.forEach(sample => importedData.samples.filter(sampleObj => sampleObj.id == sample)[0].sample_values);
     // otu_labels = unpack(samples, 3);
     // sample_values = Object.values(importedData.samples.sample_values);
@@ -78,3 +80,5 @@ function unpack(rows, index) {
 
 
 // buildPlot();
+
+// populate dropdown menu and create graph for one sample
