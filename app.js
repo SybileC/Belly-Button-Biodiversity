@@ -26,11 +26,16 @@ function unpack(rows, index) {
     // console.log("buildPlot -> samples -> first object, -> otu_ids", samples[0]['otu_ids']);
     // console.log("buildPlot -> samples -> first object, -> sample_values", samples[0]['sample_values'])
     
-    descendingOrder = samples.sort((a, b) => b[3] - a[3]);
-    console.log(descendingOrder)
+    // descendingOrder = Object.keys(samples).sort((a, b) => samples[b] - samples[a]);
+    // console.log(descendingOrder)
     
-    sliced = descendingOrder.slice(0, 10);
-    console.log(sliced)
+    // sliced = descendingOrder.slice(0, 10);
+    // console.log(sliced)
+
+    descendingOrder = samples.sort(function (a, b) { 
+        return b.sample_values - a.sample_values
+    }).slice(0, 10);
+    console.log(descendingOrder);
 
     // samples.forEach(sample => {
     //     otu_labels = sample['otu_labels'];
