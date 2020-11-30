@@ -32,20 +32,23 @@ function unpack(rows, index) {
     // sliced = descendingOrder.slice(0, 10);
     // console.log(sliced)
 
-    descendingOrder = samples.sort(function (a, b) { 
-        return b.sample_values - a.sample_values
-    }).slice(0, 10);
-    console.log(descendingOrder);
+    // descendingOrder = samples.sort(function (a, b) { 
+    //     return b.sample_values - a.sample_values
+    // }).slice(0, 10);
+    // console.log(descendingOrder);
 
-    // samples.forEach(sample => {
-    //     otu_labels = sample['otu_labels'];
-    //     otu_ids = sample['otu_ids'];
-    //     sample_values = sample['sample_values']
-    // }); 
+    samples.forEach(sample => {
+        // Object.entries(sample).sort(function (a, b) {
+        //     return b['sample_values'] - a['sample_values']
+        // }).slice(0, 10);
+        otu_labels = sample['otu_labels'];
+        otu_ids = sample['otu_ids'];
+        sample_values = sample['sample_values']
+    }); 
 
-    // console.log(otu_labels);
-    // console.log(otu_ids);
-    // console.log(sample_values);
+    console.log(otu_labels[0]);
+    console.log(otu_ids);
+    console.log(sample_values);
 
 
 
