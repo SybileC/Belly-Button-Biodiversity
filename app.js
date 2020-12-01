@@ -57,9 +57,9 @@ function buildPlot(){
 
         d3.selectAll("#selDataset").on("onchange", updatePlot);
 
-        function updatePlot() {
-            
-        }
+        function updatePlot(sample) {
+            return samples.filter(obj => obj.id == sample)
+        };
         
         // function getSample() {
         //     dataset = d3.select("#selDataset").node().value;
