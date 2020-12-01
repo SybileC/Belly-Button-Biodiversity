@@ -23,35 +23,35 @@ d3.json("data/samples.json").then(function(importedData) {
 
   console.log(filteredSample);
 
-  sliced_sample = Array.prototype.slice.call(filteredSample, 10);
+//   sliced_sample = Object.entries(filteredSample).slice(0,10);
 
-  console.log(sliced_sample);
+//   console.log(sliced_sample);
 
-//   sample_values = filteredSample.map(sample => sample.sample_values);
+  sample_values = filteredSample.map(sample => sample.sample_values);
 
-//   console.log(sample_values);
+  console.log(sample_values);
 
-//   sliced_values = sample_values.slice(0, 10);
+  sliced_values = sample_values.slice(0, 10);
 
-//   console.log(sliced_values);
+  console.log(sliced_values);
 
-//   init () {
-//       trace1 = {
-//       type: "bar",
-//       x: sample['sample_values'],
-//       y: otu_ids,
-//       text: otu_labels,
-//       orientation: "h"
-//   };
+  init() {
+      trace1 = {
+      type: "bar",
+      x: filteredSample.map(sample => sample.sample_values).slice(0,10),
+      y: filteredSample.map(sample => sample.otu_ids).slice(0,10),
+      text: filteredSample.map(sample => sample.otu_labels).slice(0,10),
+      orientation: "h"
+  };
   
-//       data = [trace1];
+      data = [trace1];
   
-//       layout = {
-//           title: 'Top 10 OTUs Found in Individuals'
-//       }
+      layout = {
+          title: 'Top 10 OTUs Found in Individuals'
+      }
   
-//       Plotly.newPlot("bar", data, layout);
-//       }
+      Plotly.newPlot("bar", data, layout);
+      }
 
 //   d3.selectAll("#selDataset").on("onchange", getSample);
       
