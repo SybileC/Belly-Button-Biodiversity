@@ -9,18 +9,22 @@ function buildPlot(){
         console.log(samples);
         console.log(names);
         console.log(metadata);
+
+        sample_values = samples[0]['sample_values'];
+        otu_ids = samples[0]['otu_ids'];
+        otu_labels = samples[0]['otu_labels']
     
     
-        sample_values = samples[0]['sample_values'].slice(0,10).reverse();
-        otu_ids = samples[0]['otu_ids'].slice(0,10).reverse();
-        otu_labels = samples[0]['otu_labels'].slice(0,10).reverse();
+        topSample_values = sample_values.slice(0,10).reverse();
+        topOtu_ids = otu_ids.slice(0,10).reverse();
+        topOtu_labels = otu_labels.slice(0,10).reverse();
     
 
         trace1 = [{
             type: "bar",
-            x: sample_values,
-            y: `OTU${otu_ids}`,
-            text: otu_labels,
+            x: topSample_values,
+            y: `OTU${topOtu_ids}`,
+            text: topOtu_labels,
             orientation: "h"
         }];
 
@@ -55,11 +59,15 @@ function buildPlot(){
                 .property("value", sample);
             });
 
-        d3.selectAll("#selDataset").on("onchange", updatePlot);
+        // d3.selectAll("#selDataset").on("onchange", updatePlot);
 
-        function updatePlot(sample) {
-            return samples.filter(obj => obj.id == sample)
-        };
+        // function updatePlot(sample) {
+        //     for (var i = 0; i < names.length; i++) {
+        //         sample_values = samples.filter(obj => obj.id == sample)[i].sample_values;
+        //         otu_ids = samples.filter(obj => obj.id == sample)[i].otu_ids;
+        //         otu_labels = samples.filter(obj => obj.id == sample)[i].otu_labels;
+        //     }
+        // };
         
         // function getSample() {
         //     dataset = d3.select("#selDataset").node().value;
