@@ -1,4 +1,6 @@
 function buildPlot(){
+    dropdownMenu = d3.select("#selDataset");
+
     d3.json("data/samples.json").then(function(importedData) {
         samples = importedData.samples;
         names = importedData.names;
@@ -17,7 +19,7 @@ function buildPlot(){
         trace1 = [{
             type: "bar",
             x: sample_values,
-            y: otu_ids,
+            y: `OTU${otu_ids}`,
             text: otu_labels,
             orientation: "h"
         }];
@@ -45,7 +47,38 @@ function buildPlot(){
 
         Plotly.newPlot("bubble", trace2, layout2)
 
+       
+        names.forEach((sample) => {
+            dropdownMenu
+                .append("option")
+                .text(sample)
+                .property("value", sample);
+            });
 
+        d3.selectAll("#selDataset").on("onchange", updatePlot);
+
+        function updatePlot() {
+            
+        }
+        
+        // function getSample() {
+        //     dataset = d3.select("#selDataset").node().value;
+        //     CHART = d3.selectAll("#bar").node()
+        //     x = []
+        //     y = []
+
+        //     for (var i = 0; i < names.length; i++) {
+        //         option = names[i];
+        //         if (dataset == option) {
+        //             x = samples[i]['otu_ids'];
+        //             y = samples[i]['sample_values'];
+        //         }
+        //     } 
+        
+        //     Plotly.restyle(CHART, "x", [x]);
+        //     Plotly.restyle(CHART, "y", [y]);
+        // }
+        
     });
 };
 
