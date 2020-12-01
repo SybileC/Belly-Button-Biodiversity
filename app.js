@@ -1,84 +1,49 @@
-function unpack(rows, index) {
-    return rows.map(function(row) {
-      return row[index];
-    });
-  }
+// function unpack(rows, index) {
+//     return rows.map(function(row) {
+//       return row[index];
+//     });
+//   }
   
 // function buildPlot() {
-    d3.json("data/samples.json").then(function(importedData) {
-    console.log(importedData.names);
-    console.log(importedData.metadata);
-    console.log(importedData.samples);
+d3.json("data/samples.json").then(function(importedData) {
+      
+      console.log(importedData.names);
+      console.log(importedData.metadata);
+      console.log(importedData.samples);
 
-    names = Object.values(importedData.names);
-    metadata = Object.values(importedData.metadata);
-    samples = Object.values(importedData.samples);
+  names = importedData.names;
+  metadata = importedData.metadata;
+  samples = importedData.samples;
 
+  init () {
+      trace1 = {
+      type: "bar",
+      x: sample['sample_values'],
+      y: otu_ids,
+      text: otu_labels,
+      orientation: "h"
+  };
+  
+      data = [trace1];
+  
+      layout = {
+          title: 'Top 10 OTUs Found in Individuals'
+      }
+  
+      Plotly.newPlot("bar", data, layout);
+      }
 
+  d3.selectAll("#selDataset").on("onchange", getSample);
+      
+  function getSample() {
+      //   return sample.id === 940;
+      dropdownMenu = d3.select("#selDataset").property("value");
+      // data.samples.filter(sampleObj => sampleObj.id == sample)[0].otu_ids
 
-    // importedData.samples.forEach(sample => importedData.samples.filter(sampleObj => sampleObj.id == sample)[0].sample_values);
-    // otu_labels = unpack(samples, 3);
-    // sample_values = Object.values(importedData.samples.sample_values);
-    // otu_ids = Object.values(importedData.samples.otu_ids);
+  }
 
-    // console.log(otu_labels);
-    
+//   filteredSamples = samples.filter(getSample);
 
-    // console.log("buildPlot -> samples -> first object, -> otu_labels", samples[0]['otu_labels']);
-    // console.log("buildPlot -> samples -> first object, -> otu_ids", samples[0]['otu_ids']);
-    // console.log("buildPlot -> samples -> first object, -> sample_values", samples[0]['sample_values'])
-    
-    // descendingOrder = Object.keys(samples).sort((a, b) => samples[b] - samples[a]);
-    // console.log(descendingOrder)
-    
-    // sliced = descendingOrder.slice(0, 10);
-    // console.log(sliced)
-
-    // descendingOrder = samples.sort(function (a, b) { 
-    //     return b.sample_values - a.sample_values
-    // }).slice(0, 10);
-    // console.log(descendingOrder);
-
-   let sample_id = samples.map(sample => {
-        // Object.entries(sample).sort(function (a, b) {
-        //     return b['sample_values'] - a['sample_values']
-        // }).slice(0, 10);
-        // otu_labels = sample['otu_labels'];
-        // otu_ids = sample['otu_ids'];
-        // sample_values = sample['sample_values']
-        // slicedSample = Array.prototype.slice.call(sample, 4)
-        return sample.otu_ids
-    }); 
-
-    console.log(sample_id)
-
-    // console.log(otu_labels[0]);
-    // console.log(otu_ids);
-    // console.log(sample_values);
-    // console.log(slicedSample);
-
-
-
-
-    // trace1 = {
-    //     type: "bar",
-    //     x: sample_values,
-    //     y: otu_ids,
-    //     text: otu_labels,
-    //     orientation: "h"
-    // };
-
-    // data = [trace1];
-
-    // layout = {
-    //     title: 'Top 10 OTUs Found in Individuals'
-    // }
-
-    // Plotly.newPlot("bar", data, layout);
-    });
-    // }
-
-
-// buildPlot();
-
-// populate dropdown menu and create graph for one sample
+//   console.log(filteredSamples);
+       
+});
