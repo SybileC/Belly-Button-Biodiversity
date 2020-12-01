@@ -35,29 +35,29 @@ d3.json("data/samples.json").then(function(importedData) {
 
   console.log(sliced_values);
 
-  init() {
-      trace1 = {
-      type: "bar",
-      x: filteredSample.map(sample => sample.sample_values).slice(0,10),
-      y: filteredSample.map(sample => sample.otu_ids).slice(0,10),
-      text: filteredSample.map(sample => sample.otu_labels).slice(0,10),
-      orientation: "h"
-  };
+  function init() {
+    trace1 = [{
+    type: "bar",
+    x: filteredSample.map(sample => sample.sample_values).slice(0,10),
+    y: filteredSample.map(sample => sample.otu_ids).slice(0,10),
+    text: filteredSample.map(sample => sample.otu_labels).slice(0,10),
+    orientation: "h"
+  }
   
-      data = [trace1];
+    data = [trace1];
   
-      layout = {
-          title: 'Top 10 OTUs Found in Individuals'
-      }
+    layout = {
+        title: 'Top 10 OTUs Found in Individuals'
+    }
   
-      Plotly.newPlot("bar", data, layout);
-      }
+    Plotly.newPlot("bar", data, layout);
+    }
 
-//   d3.selectAll("#selDataset").on("onchange", getSample);
+  d3.selectAll("#selDataset").on("onchange", getSample);
       
 //   function getSample() {
 //       //   return sample.id === 940;
-//       dropdownMenu = d3.select("#selDataset").property("value");
+    //   dropdownMenu = d3.select("#selDataset").property("value");
 //       // data.samples.filter(sampleObj => sampleObj.id == sample)[0].otu_ids
 
 //   }
