@@ -28,7 +28,7 @@ function buildPlot(){
         Plotly.newPlot("bar", trace1, layout1);
 
         trace2 = [{
-            type: "markers",
+            mode: "markers",
             x: otu_ids,
             y: sample_values,
             text: otu_labels,
