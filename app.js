@@ -23,7 +23,7 @@ d3.json("data/samples.json").then(function(importedData) {
 
   console.log(filteredSample);
 
-  sliced_sample = Array.prototype.slice.call(filteredSample.sample_values, 10);
+  sliced_sample = Array.prototype.slice.call(filteredSample, 10);
 
   console.log(sliced_sample);
 
