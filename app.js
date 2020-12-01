@@ -1,8 +1,9 @@
 function buildPlot(){
     d3.json("data/samples.json").then(function(importedData) {
-        var samples = importedData.samples;
+        samples = importedData.samples;
         names = importedData.names;
         metadata = importedData.metada;;
+        
         console.log(samples);
         console.log(names);
         console.log(metadata);
@@ -43,6 +44,8 @@ function buildPlot(){
         };
 
         Plotly.newPlot("bubble", trace2, layout2)
+
+
     });
 };
 
