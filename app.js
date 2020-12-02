@@ -59,8 +59,8 @@ function buildPlot(){
          .enter()
          .append("div")
          .html(firstSample.forEach(([key,value]) => {
-            console.log(`${key}: ${value}`)
-        });
+            console.log(`${key}: ${value}`);
+        }));
 
 
         names.forEach((sample) => {
