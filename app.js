@@ -16,7 +16,7 @@ function buildPlot(){
     
     
         topSample_values = sample_values.slice(0,10).reverse();
-        topOtu_ids = otu_ids.map(id => otu_ids.id).slice(0,10).reverse();
+        topOtu_ids = otu_ids.map(id => id).slice(0,10).reverse();
         topOtu_labels = otu_labels.slice(0,10).reverse();
 
         console.log(topOtu_ids);
@@ -53,18 +53,13 @@ function buildPlot(){
 
         Plotly.newPlot("bubble", trace2, layout2)
 
+        firstSample = metadata[0]
 
-        // panel = d3.select("#sample-metadata");
-        // panel.text(Object.entries(metadata));
-
-        d3.select("#sample-metadata")
-         .data(metadata)
-         .enter()
-         .html("")
-         .append("div")
-         .text(Object.defineProperties(metadata).forEach(([key, value]) => {
-             console.log(`${key}: ${value}`);
-         }));
+        panel = d3.select("#sample-metadata");
+        panel.html("");
+        Object.entries(firstSample).forEach(([key, value]) => {
+            panel.append("div").text(`${key}: ${value}`);
+          });
 
 
         names.forEach((sample) => {
@@ -129,11 +124,13 @@ function optionChanged(sample) {
 
     Plotly.newPlot("bubble", trace2, layout2)
 
-   
-    firstSample = metadata[0];
+    selectedSample = newMetadata[0]
 
-    console.log(firstSample);
-
+    panel = d3.select("#sample-metadata");
+    panel.html("");
+    Object.entries(selectedSample).forEach(([key, value]) => {
+        panel.append("div").text(`${key}: ${value}`);
+      });
     
     });
 };
