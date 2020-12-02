@@ -54,13 +54,19 @@ function buildPlot(){
        
         firstSample = metadata[0];
 
-        d3.select(".panel-body").selectAll("div")
-         .data(firstSample)
-         .enter()
-         .append("div")
-         .html(firstSample.forEach(([key,value]) => {
-            console.log(`${key}: ${value}`);
-        }));
+        console.log(firstSample);
+
+        panel = d3.select(".panel-body");
+        div = panel.select("div");
+        panelBody = div.append("ul");
+        panelBody.append("li").text(firstSample);
+
+        // d3.select(".panel-body").selectAll("div")
+        //  .data(firstSample)
+        //  .enter()
+        //  .append("ul")
+        //  .append("li")
+        //  .text(Object.entries(firstSample));
 
 
         names.forEach((sample) => {
@@ -70,35 +76,39 @@ function buildPlot(){
                 .property("value", sample);
             });
 
-        // d3.selectAll("#selDataset").on("onchange", updatePlot);
+        d3.selectAll("#selDataset").on("onchange", updatePlot);
 
-        // function updatePlot(sample) {
-        //     for (var i = 0; i < names.length; i++) {
-        //         sample_values = samples.filter(obj => obj.id == sample)[i].sample_values;
-        //         otu_ids = samples.filter(obj => obj.id == sample)[i].otu_ids;
-        //         otu_labels = samples.filter(obj => obj.id == sample)[i].otu_labels;
-        //     }
-        // };
+        function updatePlot(sample) {
+            for (var i = 0; i < names.length; i++) {
+                sample_values = samples.filter(obj => obj.id == sample)[i].sample_values;
+                otu_ids = samples.filter(obj => obj.id == sample)[i].otu_ids;
+                otu_labels = samples.filter(obj => obj.id == sample)[i].otu_labels;
+            }
+        };
         
-        // function getSample() {
-        //     dataset = d3.select("#selDataset").node().value;
-        //     CHART = d3.selectAll("#bar").node()
-        //     x = []
-        //     y = []
+        function getSample() {
+            dataset = d3.select("#selDataset").node().value;
+            CHART = d3.selectAll("#bar").node()
+            x = []
+            y = []
 
-        //     for (var i = 0; i < names.length; i++) {
-        //         option = names[i];
-        //         if (dataset == option) {
-        //             x = samples[i]['otu_ids'];
-        //             y = samples[i]['sample_values'];
-        //         }
-        //     } 
+            for (var i = 0; i < names.length; i++) {
+                option = names[i];
+                if (dataset == option) {
+                    x = samples[i]['otu_ids'];
+                    y = samples[i]['sample_values'];
+                }
+            } 
         
-        //     Plotly.restyle(CHART, "x", [x]);
-        //     Plotly.restyle(CHART, "y", [y]);
-        // }
+            Plotly.restyle(CHART, "x", [x]);
+            Plotly.restyle(CHART, "y", [y]);
+        }
         
     });
 };
 
 buildPlot();
+
+//Filter/fetch data
+//event handler
+//display panel
