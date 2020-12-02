@@ -16,7 +16,7 @@ function buildPlot(){
     
     
         topSample_values = sample_values.slice(0,10).reverse();
-        topOtu_ids = otu_ids.map(id => id).slice(0,10).reverse();
+        topOtu_ids = otu_ids.map(id => `OTU${id}`).slice(0,10).reverse();
         topOtu_labels = otu_labels.slice(0,10).reverse();
 
         console.log(topOtu_ids);
@@ -25,7 +25,7 @@ function buildPlot(){
         trace1 = [{
             type: "bar",
             x: topSample_values,
-            y: `OTU${topOtu_ids}`, // Can't display label
+            y: topOtu_ids, 
             text: topOtu_labels,
             orientation: "h"
         }];
@@ -90,13 +90,13 @@ function optionChanged(sample) {
     sample_values = newSample[0]['sample_values'];
 
     topSample_values = sample_values.slice(0,10).reverse();
-    topOtu_ids = otu_ids.slice(0,10).reverse();
+    topOtu_ids = otu_ids.map(id => `OTU${id}`).slice(0,10).reverse();
     topOtu_labels = otu_labels.slice(0,10).reverse();
     
     trace1 = [{
         type: "bar",
         x: topSample_values,
-        y: `OTU${topOtu_ids}`, // Can't display label
+        y: topOtu_ids, 
         text: topOtu_labels,
         orientation: "h"
     }];
@@ -137,4 +137,3 @@ function optionChanged(sample) {
 
 buildPlot();
 
-//display panel
