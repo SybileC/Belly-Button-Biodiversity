@@ -4,7 +4,7 @@ function buildPlot(){
     d3.json("data/samples.json").then(function(importedData) {
         samples = importedData.samples;
         names = importedData.names;
-        metadata = importedData.metada;;
+        metadata = importedData.metadata;;
         
         console.log(samples);
         console.log(names);
@@ -23,7 +23,7 @@ function buildPlot(){
         trace1 = [{
             type: "bar",
             x: topSample_values,
-            y: `OTU${topOtu_ids}`,
+            y: `OTU${topOtu_ids}`, // Can't display label
             text: topOtu_labels,
             orientation: "h"
         }];
@@ -52,6 +52,17 @@ function buildPlot(){
         Plotly.newPlot("bubble", trace2, layout2)
 
        
+        firstSample = metadata[0];
+
+        d3.select(".panel-body").selectAll("div")
+         .data(firstSample)
+         .enter()
+         .append("div")
+         .html(firstSample.forEach(([key,value]) => {
+            console.log(`${key}: ${value}`)
+        });
+
+
         names.forEach((sample) => {
             dropdownMenu
                 .append("option")
