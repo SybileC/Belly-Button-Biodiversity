@@ -48,7 +48,8 @@ function buildPlot(){
         }];
 
         layout2 = {
-            title: "Sample"
+            title: "Sample",
+            xaxis: { title: "OTU ID"}
         };
 
         Plotly.newPlot("bubble", trace2, layout2)
@@ -119,7 +120,8 @@ function optionChanged(sample) {
     }];
 
     layout2 = {
-        title: "Sample"
+        title: "Sample",
+        xaxis: { title: "OTU ID"}
     };
 
     Plotly.newPlot("bubble", trace2, layout2)
