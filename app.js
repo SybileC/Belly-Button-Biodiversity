@@ -58,7 +58,7 @@ function buildPlot(){
         panel = d3.select("#sample-metadata");
         panel.html("");
         Object.entries(firstSample).forEach(([key, value]) => {
-            panel.append("div").text(`${key}: ${value}`);
+            panel.append("h4").text(`${key}: ${value}`);
           });
 
 
@@ -102,7 +102,7 @@ function optionChanged(sample) {
     }];
 
     layout1 = {
-        title: "Top 10 OTUs found in Individuals"
+        title: "Top 10 OTUs found in Individual"
     } 
 
     Plotly.newPlot("bar", trace1, layout1);
@@ -129,7 +129,7 @@ function optionChanged(sample) {
     panel = d3.select("#sample-metadata");
     panel.html("");
     Object.entries(selectedSample).forEach(([key, value]) => {
-        panel.append("div").text(`${key}: ${value}`);
+        panel.append("h4").text(`${key}: ${value}`);
       });
     
     });
