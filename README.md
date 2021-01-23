@@ -16,6 +16,7 @@ App was deployed to GitHub Pages (https://sybilec.github.io/Belly-Button-Biodive
     ![Bubble Chart](Images/Bubble_chart.PNG)
 
 - Displayed the sample metadata (an individual's demographic information).
+    
     ![Panel](Images/Panel.PNG)
 
 - Whenever user select a sample id from the dropdown menu, the dashboard will display a panel with the individual demographic information and charts revealing microbes found in individual and their distribution.
